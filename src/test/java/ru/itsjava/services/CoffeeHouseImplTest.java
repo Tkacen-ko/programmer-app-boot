@@ -17,11 +17,10 @@ public class CoffeeHouseImplTest {
 
     @Configuration
     static class MyConfiguration{
-
         @Bean
         public IOService ioService(){
             IOServiceImpl mockIoService = Mockito.mock(IOServiceImpl.class);
-            when(mockIoService.input()).thenReturn("Mitya");
+            when(mockIoService.input()).thenReturn("Latte");
             return mockIoService;
         }
         @Bean
@@ -32,14 +31,11 @@ public class CoffeeHouseImplTest {
         }
         @Bean
         public CoffeeHouseImpl coffeeHouse(CoffeeService coffeeService,IOService ioService){
-            Coffee coffee = coffeeService.getTypeCoffeeAndSetPrice(ioService.input());
-            return new CoffeeHouseImpl(coffeeService, ioService);
+            CoffeeHouseImpl coffeeHouse = new CoffeeHouseImpl(coffeeService, ioService);
+
+            return coffeeHouse;
         }
     }
-    @Autowired
-    private CoffeeService coffeeService;
-    @Autowired
-    private IOService ioService;
 
     @Autowired
     private CoffeeHouseImpl coffeeHouse;
