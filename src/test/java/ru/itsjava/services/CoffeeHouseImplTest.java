@@ -9,6 +9,10 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import ru.itsjava.domain.Coffee;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;
 
 @SpringBootTest
@@ -32,7 +36,6 @@ public class CoffeeHouseImplTest {
         @Bean
         public CoffeeHouseImpl coffeeHouse(CoffeeService coffeeService,IOService ioService){
             CoffeeHouseImpl coffeeHouse = new CoffeeHouseImpl(coffeeService, ioService);
-
             return coffeeHouse;
         }
     }
@@ -43,6 +46,12 @@ public class CoffeeHouseImplTest {
     @DisplayName("Корректный метод разговора с клиентом")
     @Test
     public void shouldHaveCorrectSayGoodDayNewClient(){
-            coffeeHouse.barista();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(out));
+        coffeeHouse.barista();
+
+        assertEquals("Good day! What kind of coffee do you want?\r\n" +
+                "Your Latte sir. It will cost 0.0 dollars\r\n", out.toString());
+
     }
 }

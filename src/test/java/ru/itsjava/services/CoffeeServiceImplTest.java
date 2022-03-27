@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,7 +18,7 @@ public class CoffeeServiceImplTest {
     static class MyConfiguration{
         @Bean
         public CoffeeServiceImpl coffeeService(){
-            return new CoffeeServiceImpl();
+            return new CoffeeServiceImpl("Latte", "Cappuccino", "Cocoa");
         }
     }
 
