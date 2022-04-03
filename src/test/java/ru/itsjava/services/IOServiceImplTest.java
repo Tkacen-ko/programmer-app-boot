@@ -22,7 +22,7 @@ public class IOServiceImplTest {
 
         @Bean
         public IOService ioService(){
-            return new IOServiceImpl();
+            return new IOServiceImpl(byteArrayInputStream);
         }
     }
     @Autowired

@@ -6,10 +6,10 @@ import ru.itsjava.domain.Coffee;
 
 @Service
 public class CoffeeServiceImpl implements CoffeeService {
-    private double price;
     private String firstDrink;
     private String secondDrink;
     private String thirdDrink;
+    private double price;
 
     public CoffeeServiceImpl(@Value("${cofee.firstDrink}") String firstDrink,
                              @Value("${cofee.secondDrink}") String secondDrink,
