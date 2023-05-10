@@ -15,8 +15,8 @@ public class CoffeeServiceImpl implements CoffeeService {
                              @Value("${cofee.secondDrink}") String secondDrink,
                              @Value("${cofee.thirdDrink}") String thirdDrink){
         this.firstDrink = firstDrink;
-        this.secondDrink = firstDrink;
-        this.thirdDrink = firstDrink;
+        this.secondDrink = secondDrink;
+        this.thirdDrink = thirdDrink;
     }
 
     @Override
